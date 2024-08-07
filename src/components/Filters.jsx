@@ -37,6 +37,8 @@ function Filters(props) {
 Filters.propTypes = {
   input: PropTypes.string,
   onChangeInput: PropTypes.func.isRequired,
+  specie: PropTypes.string,
+  onChangeSpecie: PropTypes.func.isRequired,
 };
 
 export default Filters;

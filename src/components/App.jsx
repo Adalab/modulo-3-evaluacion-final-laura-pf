@@ -106,8 +106,8 @@ function App() {
                 <CharacterList characters={filteredCharacters} />
               ) : (
                 <p className="message">
-                  No se encuentra nada relacionado con la búsqueda:{" "}
-                  {inputName || inputSpecie}
+                  No se encuentra nada relacionado con:{" "}
+                  {inputName || inputSpecie} {inputName && inputSpecie}
                 </p>
               )}
             </>
