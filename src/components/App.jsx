@@ -53,13 +53,15 @@ function App() {
 
   return (
     <>
-      <header className="header">
-        <img
-          className="header__img"
-          src={headerImage}
-          alt="logo Rick y Morty"
-        />
-      </header>
+      <div className="container-header">
+        <header className="header">
+          <img
+            className="header__img"
+            src={headerImage}
+            alt="logo Rick y Morty"
+          />
+        </header>
+      </div>
       <Routes>
         <Route
           path="/"
