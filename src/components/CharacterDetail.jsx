@@ -32,7 +32,14 @@ function CharacterDetail(props) {
 
           <section className="container-detail__info">
             <h4 className=" p">{props.character.name}</h4>
-            <p className=" p">Status: {props.character.status}</p>
+            <p className=" p">
+              Status: {props.character.status}{" "}
+              {props.character.status === "Dead" && (
+                <span role="img" aria-label="skull">
+                  💀
+                </span>
+              )}
+            </p>
             <p className=" p">Species: {props.character.species}</p>
             <p className=" p">Origin: {props.character.origin}</p>
             <p className="container-detail__info-episodes p">

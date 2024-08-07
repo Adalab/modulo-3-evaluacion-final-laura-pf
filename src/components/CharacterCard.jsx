@@ -13,6 +13,9 @@ function CharacterCard(props) {
         />
         <h4 className="list__name p">{props.characterInfo.name}</h4>
         <p className="list__specie p">{props.characterInfo.species}</p>
+        <p className="icon">
+          {props.characterInfo.status === "Dead" && <span>💀</span>}
+        </p>
       </Link>
     </li>
   );
