@@ -3,6 +3,8 @@ import headerImage from "./images/rickymorty.png";
 import { useState, useEffect } from "react";
 import CharacterList from "./CharacterList";
 import Filters from "./Filters";
+import CharacterDetail from "./CharacterDetail";
+import { Routes, Route, useLocation, matchPath } from "react-router-dom";
 
 function App() {
   const [listCharacters, setListCharacter] = useState([]);
@@ -25,7 +27,7 @@ function App() {
             origin: character.origin.name,
           };
         });
-        console.log(characterData);
+
         setListCharacter(characterData);
       });
   }, []);
@@ -38,6 +40,17 @@ function App() {
     character.name.toLowerCase().includes(inputName.toLocaleLowerCase())
   );
 
+  //vista detalle ruta:
+
+  const { pathname } = useLocation();
+  const routeData = matchPath("/detail/:characterId", pathname);
+  const idCharacter =
+    routeData !== null ? parseInt(routeData.params.characterId) : null;
+
+  const characterSelected = listCharacters.find(
+    (character) => character.id === idCharacter
+  );
+
   return (
     <>
       <header className="header">
@@ -47,9 +60,22 @@ function App() {
           alt="logo Rick y Morty"
         />
       </header>
-      <Filters onChangeInput={handleChangeInput} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Filters onChangeInput={handleChangeInput} />
 
-      <CharacterList characters={filteredCharacters} />
+              <CharacterList characters={filteredCharacters} />
+            </>
+          }
+        />
+        <Route
+          path="/detail/:characterId"
+          element={<CharacterDetail character={characterSelected} />}
+        />
+      </Routes>
     </>
   );
 }

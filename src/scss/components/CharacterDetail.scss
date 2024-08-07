@@ -1,0 +1,37 @@
+.detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  // padding: top right bottom left
+}
+
+.container-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  background-color: cyan;
+  padding: 50px 50px 45px 50px;
+  &__contimg {
+    width: 200px;
+    &-img {
+      width: 100%;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    &-espisodes {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.link {
+  color: black;
+}
