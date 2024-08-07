@@ -7,7 +7,12 @@ function Filters(props) {
 
   return (
     <form className="form">
-      <input className="form__input" type="text" onChange={handleChange} />
+      <input
+        value={props.input}
+        className="form__input"
+        type="text"
+        onChange={handleChange}
+      />
     </form>
   );
 }

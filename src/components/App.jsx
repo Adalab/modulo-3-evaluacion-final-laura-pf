@@ -5,10 +5,11 @@ import CharacterList from "./CharacterList";
 import Filters from "./Filters";
 import CharacterDetail from "./CharacterDetail";
 import { Routes, Route, useLocation, matchPath } from "react-router-dom";
+import localStorage from "../services/localStorage";
 
 function App() {
   const [listCharacters, setListCharacter] = useState([]);
-  const [inputName, setInputName] = useState("");
+  const [inputName, setInputName] = useState(localStorage.get("input") || "");
 
   useEffect(() => {
     fetch(
@@ -42,6 +43,10 @@ function App() {
     setInputName(value);
   }
 
+  useEffect(() => {
+    localStorage.set("input", inputName);
+  }, [inputName]);
+
   const filteredCharacters = listCharacters.filter((character) =>
     character.name.toLowerCase().includes(inputName.toLocaleLowerCase())
   );
@@ -73,7 +78,7 @@ function App() {
           path="/"
           element={
             <>
-              <Filters onChangeInput={handleChangeInput} />
+              <Filters input={inputName} onChangeInput={handleChangeInput} />
 
               <CharacterList characters={filteredCharacters} />
             </>
