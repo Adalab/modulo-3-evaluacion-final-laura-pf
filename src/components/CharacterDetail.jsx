@@ -4,10 +4,12 @@ import "../scss/components/CharacterDetail.scss";
 function CharacterDetail(props) {
   return (
     <>
-      <Link className="link p" to="/">
-        &lt; Volver
-      </Link>
       <div className="detail">
+        <div className="container-link">
+          <Link className="container-link__link p" to="/">
+            &lt; Volver
+          </Link>
+        </div>
         <article className="container-detail">
           <figure className="container-detail__contimg">
             <img
