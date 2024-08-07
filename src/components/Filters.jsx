@@ -1,4 +1,7 @@
-function Filters() {
+function Filters(props) {
+  function handleChange(event) {
+    props.onChangeInput(event.target.value);
+  }
   //     Cuando la usuaria escribe el nombre en el filtro
   //  Recojo el valor
   //  Filtro con ese valor

@@ -6,6 +6,7 @@ import Filters from "./Filters";
 
 function App() {
   const [listCharacters, setListCharacter] = useState([]);
+  const [inputName, setInputName] = useState("");
 
   useEffect(() => {
     fetch(
@@ -29,6 +30,14 @@ function App() {
       });
   }, []);
 
+  function handleChangeInput(value) {
+    setInputName(value);
+  }
+
+  const filteredCharacters = listCharacters.filter((character) =>
+    character.name.toLowerCase().includes(inputName.toLocaleLowerCase())
+  );
+
   return (
     <>
       <header className="header">
@@ -38,9 +47,9 @@ function App() {
           alt="logo Rick y Morty"
         />
       </header>
-      <Filters />
+      <Filters onChangeInput={handleChangeInput} />
 
-      <CharacterList characters={listCharacters} />
+      <CharacterList characters={filteredCharacters} />
     </>
   );
 }
