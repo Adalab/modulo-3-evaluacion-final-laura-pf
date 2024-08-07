@@ -10,6 +10,7 @@ import localStorage from "../services/localStorage";
 function App() {
   const [listCharacters, setListCharacter] = useState([]);
   const [inputName, setInputName] = useState(localStorage.get("input") || "");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -36,6 +37,7 @@ function App() {
         });
 
         setListCharacter(sortedCharacterData);
+        setIsLoading(false);
       });
   }, []);
 
@@ -80,15 +82,16 @@ function App() {
             <>
               <Filters input={inputName} onChangeInput={handleChangeInput} />
 
-              {filteredCharacters.length > 0 ? (
+              {isLoading ? (
+                <p className="message">Loading...</p>
+              ) : filteredCharacters.length > 0 ? (
                 <CharacterList characters={filteredCharacters} />
               ) : (
                 <p className="message">
-                  No hay ningún personaje que coincida con {inputName}
+                  No hay ningún personaje que coincida con la búsqueda{" "}
+                  {inputName}
                 </p>
               )}
-
-              {/* <CharacterList characters={filteredCharacters} /> */}
             </>
           }
         />
