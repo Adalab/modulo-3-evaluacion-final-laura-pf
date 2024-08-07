@@ -80,7 +80,15 @@ function App() {
             <>
               <Filters input={inputName} onChangeInput={handleChangeInput} />
 
-              <CharacterList characters={filteredCharacters} />
+              {filteredCharacters.length > 0 ? (
+                <CharacterList characters={filteredCharacters} />
+              ) : (
+                <p className="message">
+                  No hay ningún personaje que coincida con {inputName}
+                </p>
+              )}
+
+              {/* <CharacterList characters={filteredCharacters} /> */}
             </>
           }
         />
