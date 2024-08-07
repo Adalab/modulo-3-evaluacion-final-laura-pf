@@ -3,12 +3,22 @@ import "../scss/components/CharacterDetail.scss";
 import PropTypes from "prop-types";
 
 function CharacterDetail(props) {
+  if (!props.character) {
+    return (
+      <div className="character-not-found">
+        <h3 className="message">El personaje que buscas no existe</h3>
+        <Link className="container-link__link p" to="/">
+          &lt; Volver al inicio
+        </Link>
+      </div>
+    );
+  }
   return (
     <>
       <div className="detail">
         <div className="container-link">
           <Link className="container-link__link p" to="/">
-            &lt; Volver
+            &lt; Volver al inicio
           </Link>
         </div>
         <article className="container-detail">
