@@ -6,15 +6,30 @@ function Filters(props) {
     props.onChangeInput(event.target.value);
   }
 
+  function handleChangeSpecie(event) {
+    props.onChangeSpecie(event.target.value);
+  }
   return (
     <form className="form">
-      <input
-        value={props.input}
-        className="form__input placeholder"
-        type="text"
-        onChange={handleChange}
-        placeholder="Name..."
-      />
+      <label htmlFor="name">
+        <input
+          id="name"
+          value={props.input}
+          className="form__input placeholder"
+          type="text"
+          onChange={handleChange}
+          placeholder="Name..."
+        />
+      </label>
+      <label htmlFor="species">
+        <input
+          value={props.specie}
+          type="text"
+          className="form__input placeholder"
+          placeholder="Specie..."
+          onChange={handleChangeSpecie}
+        />
+      </label>
     </form>
   );
 }

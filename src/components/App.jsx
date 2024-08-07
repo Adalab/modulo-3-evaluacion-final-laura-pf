@@ -11,6 +11,9 @@ function App() {
   const [listCharacters, setListCharacter] = useState([]);
   const [inputName, setInputName] = useState(localStorage.get("input") || "");
   const [isLoading, setIsLoading] = useState(true);
+  const [inputSpecie, setInputSpecie] = useState(
+    localStorage.get("specie") || ""
+  );
 
   //API a entregar : https://rickandmortyapi.com/api/character
   //API adalab por si se cae: https://raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json
@@ -46,13 +49,22 @@ function App() {
     setInputName(value);
   }
 
+  function handleChangeSpecie(value) {
+    setInputSpecie(value);
+  }
+
   useEffect(() => {
     localStorage.set("input", inputName);
-  }, [inputName]);
+    localStorage.set("specie", inputSpecie);
+  }, [inputName, inputSpecie]);
 
-  const filteredCharacters = listCharacters.filter((character) =>
-    character.name.toLowerCase().includes(inputName.toLocaleLowerCase())
-  );
+  const filteredCharacters = listCharacters
+    .filter((character) =>
+      character.name.toLowerCase().includes(inputName.toLocaleLowerCase())
+    )
+    .filter((character) =>
+      character.species.toLowerCase().includes(inputSpecie.toLocaleLowerCase())
+    );
 
   //vista detalle ruta:
 
@@ -81,7 +93,12 @@ function App() {
           path="/"
           element={
             <>
-              <Filters input={inputName} onChangeInput={handleChangeInput} />
+              <Filters
+                input={inputName}
+                onChangeInput={handleChangeInput}
+                onChangeSpecie={handleChangeSpecie}
+                specie={inputSpecie}
+              />
 
               {isLoading ? (
                 <p className="message">Loading...</p>
@@ -89,8 +106,8 @@ function App() {
                 <CharacterList characters={filteredCharacters} />
               ) : (
                 <p className="message">
-                  No hay ningún personaje que coincida con la búsqueda{" "}
-                  {inputName}
+                  No se encuentra nada relacionado con la búsqueda:{" "}
+                  {inputName || inputSpecie}
                 </p>
               )}
             </>
