@@ -9,9 +9,10 @@ function Filters(props) {
     <form className="form">
       <input
         value={props.input}
-        className="form__input"
+        className="form__input placeholder"
         type="text"
         onChange={handleChange}
+        placeholder="Name..."
       />
     </form>
   );

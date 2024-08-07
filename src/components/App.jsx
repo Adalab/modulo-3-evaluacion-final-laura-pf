@@ -12,10 +12,11 @@ function App() {
   const [inputName, setInputName] = useState(localStorage.get("input") || "");
   const [isLoading, setIsLoading] = useState(true);
 
+  //API a entregar : https://rickandmortyapi.com/api/character
+  //API adalab por si se cae: https://raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json
+
   useEffect(() => {
-    fetch(
-      "https://raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json"
-    )
+    fetch("https://rickandmortyapi.com/api/character")
       .then((response) => response.json())
       .then((data) => {
         const characterData = data.results.map((character) => {
