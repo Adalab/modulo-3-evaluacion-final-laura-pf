@@ -1,4 +1,5 @@
 import "../scss/components/Filters.scss";
+import PropTypes from "prop-types";
 
 function Filters(props) {
   function handleChange(event) {
@@ -17,5 +18,10 @@ function Filters(props) {
     </form>
   );
 }
+
+Filters.propTypes = {
+  input: PropTypes.string,
+  onChangeInput: PropTypes.func.isRequired,
+};
 
 export default Filters;

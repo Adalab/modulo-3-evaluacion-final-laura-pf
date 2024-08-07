@@ -1,5 +1,7 @@
 import "../scss/components/CharacterCard.scss";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 function CharacterCard(props) {
   return (
     <li className="list">
@@ -15,5 +17,9 @@ function CharacterCard(props) {
     </li>
   );
 }
+
+CharacterCard.propTypes = {
+  characterInfo: PropTypes.object.isRequired,
+};
 
 export default CharacterCard;

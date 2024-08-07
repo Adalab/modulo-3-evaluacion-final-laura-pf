@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../scss/components/CharacterDetail.scss";
+import PropTypes from "prop-types";
 
 function CharacterDetail(props) {
   return (
@@ -33,5 +34,7 @@ function CharacterDetail(props) {
     </>
   );
 }
-
+CharacterDetail.propTypes = {
+  character: PropTypes.object,
+};
 export default CharacterDetail;
