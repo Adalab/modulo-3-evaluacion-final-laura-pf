@@ -1,3 +1,5 @@
+import "../scss/components/Filters.scss";
+
 function Filters(props) {
   function handleChange(event) {
     props.onChangeInput(event.target.value);
@@ -7,8 +9,8 @@ function Filters(props) {
   //  Filtro con ese valor
   //  Pinto las personas filtradas
   return (
-    <form>
-      <input type="text" onChange={handleChange} />
+    <form className="form">
+      <input className="form__input" type="text" onChange={handleChange} />
     </form>
   );
 }

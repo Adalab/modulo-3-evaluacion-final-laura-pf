@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  justify-content: center;
+  &__input {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: black;
+    border: 3px solid greenyellow;
+    flex-grow: 0;
+    color: cyan;
+  }
+}
