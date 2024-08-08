@@ -15,9 +15,6 @@ function App() {
     localStorage.get("specie") || ""
   );
 
-  //API a entregar : https://rickandmortyapi.com/api/character
-  //API adalab por si se cae: https://raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json
-
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
       .then((response) => response.json())
