@@ -12,7 +12,7 @@ Buscador de personajes de la serie de Rick y morty
 
 ## Descripción
 
-Este proyecto presenta una aplicación web que permite a la usuaria buscar a un personaje de la serie Rick y Morty ya sea por su nombre o por su estado (vivo o muerto).
+Este proyecto presenta una aplicación web que permite a la usuaria buscar a un personaje de la serie Rick y Morty ya sea por su nombre o por su especie.
 
 ## Instalación
 
@@ -38,7 +38,7 @@ Este proyecto incluye las siguientes características claves:
 
 1.  **Buscador de personajes**
 
-Buscador de personajes de la serie Rick y Morty por su nombre o estado vital
+Buscador de personajes de la serie Rick y Morty por su nombre o especie
 
 1.  **Vista detalle de personajes**
     Al seleccionar un personaje, se abre la vista detalle del mismo, desde aquí, puedes volver al inicio.
