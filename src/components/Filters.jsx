@@ -11,25 +11,27 @@ function Filters(props) {
   }
   return (
     <form className="form">
-      <label htmlFor="name">
-        <input
-          id="name"
-          value={props.input}
-          className="form__input placeholder"
-          type="text"
-          onChange={handleChange}
-          placeholder="Name..."
-        />
-      </label>
-      <label htmlFor="species">
-        <input
-          value={props.specie}
-          type="text"
-          className="form__input placeholder"
-          placeholder="Specie..."
-          onChange={handleChangeSpecie}
-        />
-      </label>
+      <input
+        id="name"
+        value={props.input}
+        className="form__input placeholder"
+        type="text"
+        onChange={handleChange}
+        placeholder="Name..."
+        name="name"
+        autoComplete="off"
+      />
+
+      <input
+        id="species"
+        value={props.specie}
+        type="text"
+        className="form__input placeholder"
+        placeholder="Specie..."
+        onChange={handleChangeSpecie}
+        name="species"
+        autoComplete="off"
+      />
     </form>
   );
 }
