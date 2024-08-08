@@ -14,10 +14,16 @@ function App() {
   const [inputSpecie, setInputSpecie] = useState(
     localStorage.get("specie") || ""
   );
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error de petición al servidor: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         const characterData = data.results.map((character) => {
           return {
@@ -38,6 +44,12 @@ function App() {
         });
 
         setListCharacter(sortedCharacterData);
+      })
+      .catch((error) => {
+        console.error("Error de petición al servidor:", error);
+        setError(error.message);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   }, []);
@@ -107,6 +119,8 @@ function App() {
 
               {isLoading ? (
                 <p className="message">Loading...</p>
+              ) : error ? (
+                <p className="message">{error}</p>
               ) : filteredCharacters.length > 0 ? (
                 <CharacterList characters={filteredCharacters} />
               ) : (
