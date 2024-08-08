@@ -3,6 +3,10 @@
   background-color: cyan;
   padding-bottom: 5px;
 
+  @media (max-width: 390px) {
+    width: 270px;
+  }
+
   &__img {
     width: 100%;
     margin-bottom: 10px;
