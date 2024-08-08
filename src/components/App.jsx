@@ -50,7 +50,11 @@ function App() {
   }
 
   function handleChangeSpecie(value) {
-    setInputSpecie(value);
+    if (inputSpecie === value) {
+      setInputSpecie("");
+    } else {
+      setInputSpecie(value);
+    }
   }
 
   useEffect(() => {
@@ -60,11 +64,15 @@ function App() {
 
   const filteredCharacters = listCharacters
     .filter((character) =>
-      character.name.toLowerCase().includes(inputName.toLocaleLowerCase())
+      character.name.toLowerCase().includes(inputName.toLowerCase())
     )
-    .filter((character) =>
-      character.species.toLowerCase().includes(inputSpecie.toLocaleLowerCase())
-    );
+    .filter((character) => {
+      if (inputSpecie === "") {
+        return true; // Si no hay filtro, devuelve true para incluir todos los elementos
+      } else {
+        return character.species === inputSpecie; // Devuelve true si la especie coincide
+      }
+    });
 
   //vista detalle ruta:
 
@@ -106,8 +114,8 @@ function App() {
                 <CharacterList characters={filteredCharacters} />
               ) : (
                 <p className="message">
-                  No se encuentra nada relacionado con:{" "}
-                  {inputName || inputSpecie} {inputName && inputSpecie}
+                  No se encuentra el personaje relacionado con la búsqueda:{" "}
+                  {inputName}
                 </p>
               )}
             </>

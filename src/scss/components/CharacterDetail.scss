@@ -13,9 +13,16 @@
   gap: 60px;
   background-color: cyan;
   padding: 50px 50px 45px 50px;
+  @media (max-width: 768px) {
+    gap: 10px;
+    padding: 30px 30px 25px 30px;
+  }
 
   &__contimg {
     width: 200px;
+    @media (max-width: 790px) {
+      width: 150px;
+    }
     &-img {
       width: 100%;
     }
